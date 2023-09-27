@@ -29,9 +29,9 @@ List<RiveAsset> bottomNavs = [
       stateMachineName: "STAR_Interactivity",
       title: "FeedBack"),
   RiveAsset("assets/RiveAssets/icons.riv",
-      artboard: "AUDIO",
-      stateMachineName: "AUDIO_Interactivity",
-      title: "Speech/Text"),
+      artboard: "SEARCH",
+      stateMachineName: "SEARCH_Interactivity",
+      title: "Search"),
 ];
 
 //SIDE MENU

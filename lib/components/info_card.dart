@@ -16,11 +16,11 @@ class InfoCard extends StatelessWidget {
         ),
       ),
       title: Text(
-        "User_XOXO",
+        "Swapnil",
         style: TextStyle(color: Colors.white),
       ),
       subtitle: Text(
-        "Youtuber",
+        "User",
         style: TextStyle(color: Colors.white),
       ),
     );

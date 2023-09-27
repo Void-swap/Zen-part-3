@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"name": "animated_flutter",
+			"path": "../../Users/Swapnil/Downloads/Build-an-Animated-App-with-Rive-and-Flutter-Starting/animated_flutter"
+		},
+		{
+			"name": "ZenStructure",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "disabled"
+	}
+}

@@ -14,9 +14,6 @@ class SignInForm extends StatefulWidget {
   State<SignInForm> createState() => _SignInFormState();
 }
 
-// Thank you so much for watching
-// See you on next episode
-
 class _SignInFormState extends State<SignInForm> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 

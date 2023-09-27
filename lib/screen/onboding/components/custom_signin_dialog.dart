@@ -29,7 +29,7 @@ Future<Object?> CustomSigninDialog(BuildContext context) {
         ),
         padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.94),
+          color: Colors.white.withOpacity(0.92),
           borderRadius: const BorderRadius.all(Radius.circular(40)),
         ),
         child: Scaffold(

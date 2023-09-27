@@ -35,7 +35,7 @@ class _EntryPointState extends State<EntryPoint>
     const Hello1Page(),
     const Hello2Page(),
     const Hello3Page(),
-    const Hello4Page(),
+    Hello4Page(),
     const Hello5Page(),
   ];
 
@@ -109,6 +109,7 @@ class _EntryPointState extends State<EntryPoint>
                     artboard,
                     stateMachineName: "State Machine");
                 isSideDrawerClosed = controller.findSMI("isOpen") as SMIBool;
+                isSideDrawerClosed.value = true;
               },
               press: () {
                 isSideDrawerClosed.value = !isSideDrawerClosed.value;
