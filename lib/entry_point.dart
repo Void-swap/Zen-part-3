@@ -193,7 +193,7 @@ class _EntryPointState extends State<EntryPoint>
                               style: TextStyle(
                                 color: bottomNavs[index] == selectedBottomNav
                                     ? Colors.white
-                                    : backgroundColor2.withOpacity(0),
+                                    : Colors.white60,
                               ),
                             ),
                           ),
