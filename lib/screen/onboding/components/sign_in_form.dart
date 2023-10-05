@@ -103,13 +103,21 @@ class _SignInFormState extends State<SignInForm> {
                 padding: const EdgeInsets.only(top: 8, bottom: 16),
                 child: TextFormField(
                   validator: (value) {
-                    if (value!.isEmpty) {
-                      return "";
+                    if (value == null || value.isEmpty) {
+                      return ""; // Return empty string
+                    }
+                    if (!value.contains("@gmail.com")) {
+                      return "Invalid email address"; // Return error message
                     }
                     return null;
                   },
                   onSaved: (email) {},
                   decoration: InputDecoration(
+                    hintText: "xyz@gmail.com",
+                    hintStyle: TextStyle(color: Colors.black26),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: SvgPicture.asset("assets/icons/email.svg"),
@@ -128,11 +136,25 @@ class _SignInFormState extends State<SignInForm> {
                     if (value!.isEmpty) {
                       return "";
                     }
+                    if (value.length < 7) {
+                      return "Password must be more than 7 letter";
+                    }
+                    if (!value.contains(RegExp(r'[A-Z]'))) {
+                      return "Use atleast one uppercase letter ";
+                    }
+                    if (!value.contains(RegExp(r'[0-9]'))) {
+                      return "Use atleast one digit";
+                    }
                     return null;
                   },
                   onSaved: (password) {},
                   obscureText: true,
                   decoration: InputDecoration(
+                    hintText: "password",
+                    hintStyle: TextStyle(color: Colors.black26),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: SvgPicture.asset("assets/icons/password.svg"),

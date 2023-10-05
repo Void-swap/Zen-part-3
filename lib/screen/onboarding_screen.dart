@@ -1,12 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter_svg/svg.dart';
 import 'package:rive/rive.dart';
-
-//import 'package:rive_animation/screen/onboarding_screen.dart';
+import 'package:rive_animation/screen/onboding/animated_button2.dart';
 import 'package:rive_animation/screen/onboding/components/custom_signin_dialog.dart';
 import 'package:rive_animation/screen/onboding/components/animated_btn.dart';
+import 'package:url_launcher/url_launcher.dart';
 //components
 
 //import 'package:rive_animation/screens/onboding/components/sign_in_form.dart';
@@ -21,8 +22,15 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   //button's Animation
   late RiveAnimationController _btnAnimationController;
+  late RiveAnimationController _btnAnimationController2;
   @override
   void initState() {
+    _btnAnimationController2 = OneShotAnimation(
+      "active",
+      autoplay: true,
+    );
+    super.initState();
+
     _btnAnimationController = OneShotAnimation(
       "active",
       autoplay:
@@ -64,50 +72,103 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 19),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Stack(
                 children: [
-                  const Spacer(),
-                  const SizedBox(
-                    width: 280,
-                    child: Column(
-                      children: [
-                        Text(
-                          "hola!\nto\nZen Mind",
-                          style: TextStyle(
-                            fontSize: 59,
-                            fontFamily: 'Poppins',
-                            height: 1.2,
-                          ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Spacer(),
+                      const SizedBox(
+                        width: 280,
+                        child: Column(
+                          children: [
+                            Text(
+                              "hola!\nto\nZen Mind",
+                              style: TextStyle(
+                                fontSize: 59,
+                                fontFamily: 'Poppins',
+                                height: 1.2,
+                              ),
+                            ),
+                            SizedBox(height: 29),
+                            Text(
+                                "Zen Mind invites you to discover mindfulness and self-care.Experience peace and balance like never before.\nStart your journey to a healthier mind today",
+                                style: TextStyle(fontSize: 15)),
+                          ],
                         ),
-                        SizedBox(height: 29),
-                        Text(
-                            "Zen Mind invites you to discover mindfulness and self-care.Experience peace and balance like never before.\nStart your journey to a healthier mind today",
-                            style: TextStyle(fontSize: 15)),
-                      ],
-                    ),
-                  ),
+                      ),
 
-                  const Spacer(
-                    flex: 2,
-                  ),
-                  //this is Animated Button
-                  AnimatedBtn(
-                    btnAnimationController: _btnAnimationController,
-                    press: () {
-                      _btnAnimationController.isActive = true;
-                      Future.delayed(
-                        //shows DELAY after our BUTTONS ANIMATION
-                        Duration(milliseconds: 800),
-                        () {
-                          CustomSigninDialog(context);
+                      const Spacer(
+                          //flex: 2,
+                          ),
+                      AnimatedBtn2(
+                        btnAnimationController2: _btnAnimationController2,
+                        press: () {
+                          _btnAnimationController2.isActive = true;
+                          Future.delayed(
+                            //shows DELAY after our BUTTONS ANIMATION
+                            Duration(milliseconds: 800),
+                            () {
+                              final url = Uri.parse(
+                                  "https://www.sih.gov.in/sih2023PS?technology_bucket=QWxs&category=U29mdHdhcmU=&organization=QWxs&organization_type=QWxs");
+                              launchUrl(url, mode: LaunchMode.inAppWebView);
+                            },
+                          );
                         },
-                      );
-                    },
+                      ),
+
+                      /* Container(
+                        height: 64,
+                        width: 260,
+                        child:
+                            RiveAnimation.asset('assets/RiveAssets/button.riv'),
+                      ),*/
+                      SizedBox(height: 15),
+                      //this is Animated Button
+                      AnimatedBtn(
+                        btnAnimationController: _btnAnimationController,
+                        press: () {
+                          _btnAnimationController.isActive = true;
+                          Future.delayed(
+                            //shows DELAY after our BUTTONS ANIMATION
+                            Duration(milliseconds: 800),
+                            () {
+                              CustomSigninDialog(context);
+                            },
+                          );
+                        },
+                      ),
+                      SizedBox(height: 35)
+                    ],
                   ),
-                  const SizedBox(
-                    height: 39,
-                  ),
+                  /* Positioned(
+                    left: 45,
+                    bottom: 121,
+                    child: TextButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color?>(
+                            Colors.transparent),
+                      ),
+                      onPressed: () {
+                        final url = Uri.parse("http://localhost:52095/");
+                        launchUrl(url, mode: LaunchMode.inAppWebView);
+                      },
+                      child: Row(
+                        children: [
+                          Icon(CupertinoIcons.arrow_right, color: Colors.black),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          Text(
+                            "Register as HELPER",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),*/
                 ],
               ),
             ),

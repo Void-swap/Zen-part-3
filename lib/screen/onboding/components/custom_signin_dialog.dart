@@ -109,7 +109,7 @@ Future<Object?> CustomSigninDialog(BuildContext context) {
                   const Positioned(
                     left: 0,
                     right: 0,
-                    bottom: -50,
+                    bottom: -70,
                     child: CircleAvatar(
                       radius: 16,
                       backgroundColor: Colors.white,
