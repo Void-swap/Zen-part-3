@@ -48,17 +48,19 @@ class _SignInFormState extends State<SignInForm> {
               // First let's add the animation
               // restart it
               Future.delayed(
-                const Duration(seconds: 3),
+                const Duration(seconds: 1),
                 () {
+                  confetti.fire();
                   setState(
                     () {
                       isShowConfetti = false;
                       Future.delayed(Duration(seconds: 1), () {
-                        Navigator.push(
+                        Navigator.pushAndRemoveUntil(
                           context, //our PAGE WILL LAUNCH FROM HERE
                           MaterialPageRoute(
                             builder: (context) => EntryPoint(),
                           ),
+                          (route) => false,
                         );
                       });
                     },

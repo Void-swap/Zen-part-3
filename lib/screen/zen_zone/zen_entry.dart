@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rive_animation/zen_zone/msg_widget/screen/zen_zone.dart';
+import 'package:rive_animation/screen/zen_zone/screen/zen_zone.dart';
 import 'package:uuid/uuid.dart';
 
 class Hello2Page extends StatefulWidget {

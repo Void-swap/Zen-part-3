@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 import 'package:rive_animation/components/info_card.dart';
 import 'package:rive_animation/components/side_menu_tile.dart';
+import 'package:rive_animation/entry_point.dart';
 import 'package:rive_animation/models/rive_asset.dart';
 import 'package:rive_animation/utils/rive_utils.dart';
 
@@ -17,7 +18,7 @@ class _SideMenuState extends State<SideMenu> {
   RiveAsset selectedMenu = sideMenus.first;
 
   final List<Widget> screens = [
-    HomeScreen(),
+    EntryPoint(),
     SearchScreen(),
     FeedBackScreen(),
     HelpScreen(),
@@ -36,6 +37,7 @@ class _SideMenuState extends State<SideMenu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                SizedBox(height: 10),
                 const InfoCard(
                   name: "USER",
                   profession: "helper",
@@ -43,7 +45,7 @@ class _SideMenuState extends State<SideMenu> {
                 Padding(
                   padding: const EdgeInsets.only(left: 24, top: 32, bottom: 16),
                   child: Text(
-                    "Browse".toUpperCase(),
+                    "BROWSE",
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium!
@@ -69,7 +71,6 @@ class _SideMenuState extends State<SideMenu> {
                           setState(() {
                             selectedMenu = entry.value;
                           });
-
                           Navigator.of(context).push(PageRouteBuilder(
                             pageBuilder:
                                 (context, animation, secondaryAnimation) =>

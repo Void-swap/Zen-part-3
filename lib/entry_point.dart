@@ -7,8 +7,8 @@ import 'package:rive_animation/constants.dart';
 import 'package:rive_animation/models/menu_btn.dart';
 import 'package:rive_animation/models/rive_asset.dart';
 import 'package:rive_animation/screen/home/home_screen.dart';
+import 'package:rive_animation/screen/zen_zone/zen_entry.dart';
 import 'package:rive_animation/utils/rive_utils.dart';
-import 'package:rive_animation/zen_zone/zen_entry.dart';
 
 class EntryPoint extends StatefulWidget {
   const EntryPoint({super.key});
@@ -191,10 +191,9 @@ class _EntryPointState extends State<EntryPoint>
                             child: Text(
                               _getLabel(index),
                               style: TextStyle(
-                                color: bottomNavs[index] == selectedBottomNav
-                                    ? Colors.white
-                                    : backgroundColor2.withOpacity(0),
-                              ),
+                                  color: bottomNavs[index] == selectedBottomNav
+                                      ? Colors.white
+                                      : Colors.white60),
                             ),
                           ),
                         ],

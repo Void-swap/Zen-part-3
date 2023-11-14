@@ -43,137 +43,139 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false, //
-      body: Stack(
-        children: [
-          //this is BACKGROUND
-          Center(
-            child: Positioned(
-              height: 100,
-              width: MediaQuery.of(context).size.width * 1.7,
-              bottom: 200,
-              left: 100,
-              child: Image.asset('assets/Backgrounds/Spline.png'),
+      body: SafeArea(
+        child: Stack(
+          children: [
+            //this is BACKGROUND
+            Center(
+              child: Positioned(
+                height: 100,
+                width: MediaQuery.of(context).size.width * 1.7,
+                bottom: 200,
+                left: 100,
+                child: Image.asset('assets/Backgrounds/Spline.png'),
+              ),
             ),
-          ),
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
-              child: const SizedBox(),
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
+                child: const SizedBox(),
+              ),
             ),
-          ),
-          const RiveAnimation.asset('assets/RiveAssets/shapes.riv'),
-          Positioned.fill(
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-              child: const SizedBox(),
+            const RiveAnimation.asset('assets/RiveAssets/shapes.riv'),
+            Positioned.fill(
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
+                child: const SizedBox(),
+              ),
             ),
-          ),
-          //this is TEXT
-          SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 19),
-              child: Stack(
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Spacer(),
-                      const SizedBox(
-                        width: 280,
-                        child: Column(
-                          children: [
-                            Text(
-                              "hola!\nto\nZen Mind",
-                              style: TextStyle(
-                                fontSize: 59,
-                                fontFamily: 'Poppins',
-                                height: 1.2,
+            //this is TEXT
+            SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 19),
+                child: Stack(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Spacer(),
+                        const SizedBox(
+                          width: 280,
+                          child: Column(
+                            children: [
+                              Text(
+                                "hola!\nto\nZen Mind",
+                                style: TextStyle(
+                                  fontSize: 59,
+                                  fontFamily: 'Poppins',
+                                  height: 1.2,
+                                ),
                               ),
+                              SizedBox(height: 29),
+                              Text(
+                                  "Zen Mind invites you to discover mindfulness and self-care.Experience peace and balance like never before.\nStart your journey to a healthier mind today",
+                                  style: TextStyle(fontSize: 15)),
+                            ],
+                          ),
+                        ),
+
+                        const Spacer(
+                            //flex: 2,
                             ),
-                            SizedBox(height: 29),
+                        AnimatedBtn2(
+                          btnAnimationController2: _btnAnimationController2,
+                          press: () {
+                            _btnAnimationController2.isActive = true;
+                            Future.delayed(
+                              //shows DELAY after our BUTTONS ANIMATION
+                              Duration(milliseconds: 800),
+                              () {
+                                final url = Uri.parse(
+                                    "https://www.sih.gov.in/sih2023PS?technology_bucket=QWxs&category=U29mdHdhcmU=&organization=QWxs&organization_type=QWxs");
+                                launchUrl(url, mode: LaunchMode.inAppWebView);
+                              },
+                            );
+                          },
+                        ),
+
+                        /* Container(
+                          height: 64,
+                          width: 260,
+                          child:
+                              RiveAnimation.asset('assets/RiveAssets/button.riv'),
+                        ),*/
+                        SizedBox(height: 15),
+                        //this is Animated Button
+                        AnimatedBtn(
+                          btnAnimationController: _btnAnimationController,
+                          press: () {
+                            _btnAnimationController.isActive = true;
+                            Future.delayed(
+                              //shows DELAY after our BUTTONS ANIMATION
+                              Duration(milliseconds: 800),
+                              () {
+                                CustomSigninDialog(context);
+                              },
+                            );
+                          },
+                        ),
+                        SizedBox(height: 35)
+                      ],
+                    ),
+                    /* Positioned(
+                      left: 45,
+                      bottom: 121,
+                      child: TextButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color?>(
+                              Colors.transparent),
+                        ),
+                        onPressed: () {
+                          final url = Uri.parse("http://localhost:52095/");
+                          launchUrl(url, mode: LaunchMode.inAppWebView);
+                        },
+                        child: Row(
+                          children: [
+                            Icon(CupertinoIcons.arrow_right, color: Colors.black),
+                            SizedBox(
+                              width: 8,
+                            ),
                             Text(
-                                "Zen Mind invites you to discover mindfulness and self-care.Experience peace and balance like never before.\nStart your journey to a healthier mind today",
-                                style: TextStyle(fontSize: 15)),
+                              "Register as HELPER",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w600),
+                            ),
                           ],
                         ),
                       ),
-
-                      const Spacer(
-                          //flex: 2,
-                          ),
-                      AnimatedBtn2(
-                        btnAnimationController2: _btnAnimationController2,
-                        press: () {
-                          _btnAnimationController2.isActive = true;
-                          Future.delayed(
-                            //shows DELAY after our BUTTONS ANIMATION
-                            Duration(milliseconds: 800),
-                            () {
-                              final url = Uri.parse(
-                                  "https://www.sih.gov.in/sih2023PS?technology_bucket=QWxs&category=U29mdHdhcmU=&organization=QWxs&organization_type=QWxs");
-                              launchUrl(url, mode: LaunchMode.inAppWebView);
-                            },
-                          );
-                        },
-                      ),
-
-                      /* Container(
-                        height: 64,
-                        width: 260,
-                        child:
-                            RiveAnimation.asset('assets/RiveAssets/button.riv'),
-                      ),*/
-                      SizedBox(height: 15),
-                      //this is Animated Button
-                      AnimatedBtn(
-                        btnAnimationController: _btnAnimationController,
-                        press: () {
-                          _btnAnimationController.isActive = true;
-                          Future.delayed(
-                            //shows DELAY after our BUTTONS ANIMATION
-                            Duration(milliseconds: 800),
-                            () {
-                              CustomSigninDialog(context);
-                            },
-                          );
-                        },
-                      ),
-                      SizedBox(height: 35)
-                    ],
-                  ),
-                  /* Positioned(
-                    left: 45,
-                    bottom: 121,
-                    child: TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color?>(
-                            Colors.transparent),
-                      ),
-                      onPressed: () {
-                        final url = Uri.parse("http://localhost:52095/");
-                        launchUrl(url, mode: LaunchMode.inAppWebView);
-                      },
-                      child: Row(
-                        children: [
-                          Icon(CupertinoIcons.arrow_right, color: Colors.black),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            "Register as HELPER",
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),*/
-                ],
+                    ),*/
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,9 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rive_animation/zen_zone/msg_widget/other_msg_widget.dart';
-import 'package:rive_animation/zen_zone/msg_widget/own_msg_widget.dart';
-import 'package:rive_animation/zen_zone/msg_widget/screen/msgModel.dart';
+import 'package:rive_animation/screen/zen_zone/screen/msgModel.dart';
+import 'package:rive_animation/screen/zen_zone/msg_widget/other_msg_widget.dart';
+import 'package:rive_animation/screen/zen_zone/msg_widget/own_msg_widget.dart';
+
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ZenZone extends StatefulWidget {

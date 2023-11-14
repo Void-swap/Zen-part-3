@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rive_animation/entry_point.dart';
+//import 'package:rive_animation/entry_point.dart';
 //import 'package:rive_animation/entry_point.dart';
 import 'package:rive_animation/screen/onboarding_screen.dart';
 
